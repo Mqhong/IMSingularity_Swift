@@ -1,0 +1,6 @@
+framework module IMSingularity_Swift {
+  umbrella header "IMSingularity_Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
