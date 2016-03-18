@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "IMSingularity_Swift"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "just do it"
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'IMSingularity_SwiftClass/*.swift'
+  s.source_files = 'Pod/Classes/**/*'
   #  s.resource_bundles = {
   #  'IMSingularity_Swift' => ['Pod/Assets/*.png']
   #}

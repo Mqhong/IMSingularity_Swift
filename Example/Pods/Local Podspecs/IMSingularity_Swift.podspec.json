@@ -1,6 +1,6 @@
 {
   "name": "IMSingularity_Swift",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "summary": "just do it",
   "description": "IMSingularity_Swift --- you should get it now",
   "homepage": "https://github.com/Mqhong/IMSingularity_Swift",
@@ -10,13 +10,13 @@
   },
   "source": {
     "git": "https://github.com/Mqhong/IMSingularity_Swift.git",
-    "tag": "0.1.2"
+    "tag": "0.1.3"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "source_files": "IMSingularity_SwiftClass/*.swift",
+  "source_files": "Pod/Classes/**/*",
   "dependencies": {
     "SwiftR": [
 
