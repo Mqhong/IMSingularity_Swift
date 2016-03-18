@@ -192,10 +192,10 @@ public class IMSingularity: NSObject {
     @param hubProxy 服务器标示
     @return nil
     */
-    public func initWithConnectionUrl(url:String,hubProxy:String){
+    public func initWithConnectionUrl(url:String){
         hubConnection = SwiftR.connect(url) { [weak self] connection in
             
-            self?.chatHub = connection.createHubProxy(hubProxy)
+            self?.chatHub = connection.createHubProxy("chatHub")
             
             connection.starting = {
                 self?.delegate?.connectionState!(0)

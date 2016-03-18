@@ -1,6 +1,6 @@
 {
   "name": "IMSingularity_Swift",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "summary": "just do it",
   "description": "IMSingularity_Swift --- you should get it now",
   "homepage": "https://github.com/Mqhong/IMSingularity_Swift",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/Mqhong/IMSingularity_Swift.git",
-    "tag": "0.1.6"
+    "tag": "0.1.7"
   },
   "platforms": {
     "ios": "8.0"
