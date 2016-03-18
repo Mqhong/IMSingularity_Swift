@@ -9,5 +9,5 @@
 import UIKit
 
 public class IMSessionList: NSObject {
-     public var sessionList: Array<IMSession> = Array()
+     var sessionList: Array<IMSession> = Array()
 }

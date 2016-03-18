@@ -309,9 +309,7 @@ public class IMSingularity: NSObject {
                 
                 message = message.messageMethodWithDict(Dict: Dict)
                 
-                //MARK:发送一个通知---发送消息的回调
-                NSNotificationCenter.defaultCenter().postNotificationName("SendMessageCallBack", object: message)
-                
+                self?.delegate?.messageCallback!(message)
             })
             
             
@@ -325,8 +323,7 @@ public class IMSingularity: NSObject {
                 
                 message = message.messageMethodWithDict(Dict: Dict)
                 
-                //MARK:发送一个通知---接收消息的通知
-                NSNotificationCenter.defaultCenter().postNotificationName("receiveMessage", object: message)
+                self?.delegate?.receiveMessage!(message)
                 
             })
             
@@ -392,7 +389,7 @@ public class IMSingularity: NSObject {
     //MARK: 调用服务器方法 - 调用用户登录
     /**!
     @brief 调用用户登录
-    @param  nil
+    @param  token:用户token值
     @return nil
     */
     public func externalLogin(token:String){
@@ -422,11 +419,13 @@ public class IMSingularity: NSObject {
     }
     @return nil
     */
-    public func getTargetInfo(dict:Dictionary<String,String>){
-        self.invokeServiceMethod("getTargetInfo", args: [dict])
+    public func getTargetInfo(targetID:String,chatSessionType:String,chatSessionID:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["target_id"] = targetID
+        dic["chat_session_type"] = chatSessionType
+        dic["chatSessionID"] = chatSessionID
+        self.invokeServiceMethod("getTargetInfo", args: [dic])
     }
-    
-    
     
     //MARK: 调用服务器方法 - 获取未读信息
     /**!
@@ -437,8 +436,10 @@ public class IMSingularity: NSObject {
     }
     @return nil
     */
-    public func getUnreadMessages(dict:Dictionary<String,String>){
-        self.invokeServiceMethod("getUnreadMessages", args: [dict])
+    public func getUnreadMessages(chatSessionID:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["chatSessionID"] = chatSessionID
+        self.invokeServiceMethod("getUnreadMessages", args: [dic])
     }
     
     //MARK: 调用服务器方法 - 获取历史信息
@@ -453,8 +454,12 @@ public class IMSingularity: NSObject {
     @return nil
     */
     
-    public func getHistoryMessages(dict:Dictionary<String,String>){
-       self.invokeServiceMethod("getHistoryMessages", args: [dict])
+    public func getHistoryMessages(chatSessionID:String,size:String,beforeMessageID:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["chat_session_id"] = chatSessionID
+        dic["size"] = size
+        dic["before_message_id"] = beforeMessageID
+        self.invokeServiceMethod("getHistoryMessages", args: [dic])
     }
     
     
@@ -470,8 +475,13 @@ public class IMSingularity: NSObject {
     }
     @return nil
     */
-    public func messageToUser(dict:Dictionary<String,String>){
-         self.invokeServiceMethod("messageToUser", args: [dict])
+    public func messageToUser(targetID:String,content:String,messageToken:String,messageType:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["target_id"] = targetID
+        dic["content"] = content
+        dic["message_token"] = messageToken
+        dic["messageType"] = messageType
+        self.invokeServiceMethod("messageToUser", args: [dic])
     }
     
     
@@ -480,13 +490,16 @@ public class IMSingularity: NSObject {
     @brief 确认信息
     @param  需要上传参数格式:
     {
-    message_id          //消息ID
-    chat_session_id     //聊天会话ID
+        message_id          //消息ID
+        chat_session_id     //聊天会话ID
     }
     @return nil
     */
-    public func confirmMessage(dict:Dictionary<String,String>){
-        self.invokeServiceMethod("confirmMessage", args: [dict])
+    public func confirmMessage(messageID:String,chatSessionID:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["message_id"] = messageID
+        dic["chat_session_id"] = chatSessionID
+        self.invokeServiceMethod("confirmMessage", args: [dic])
     }
     
     
