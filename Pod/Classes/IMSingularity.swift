@@ -178,7 +178,7 @@ public enum State {
 
 }
 
-class IMSingularity: NSObject {
+public class IMSingularity: NSObject {
     public var chatHub:Hub!
     public var hubConnection: SignalR!
     public var delegate:IMSingularityDelegate?
