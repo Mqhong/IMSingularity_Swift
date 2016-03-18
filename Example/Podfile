@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'IMSingularity_Swift_Example', :exclusive => true do
+  pod 'IMSingularity_Swift', :path => '../'
+end
+
+target 'IMSingularity_Swift_Tests', :exclusive => true do
+  pod 'IMSingularity_Swift', :path => '../'
+
+  pod 'FBSnapshotTestCase'
+end
