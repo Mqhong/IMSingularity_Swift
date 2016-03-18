@@ -8,33 +8,34 @@
 
 Pod::Spec.new do |s|
   s.name             = "IMSingularity_Swift"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of IMSingularity_Swift."
+  s.version          = "0.1.1"
+  s.summary          = "just do it"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
+ s.description      = <<-DESC
+                IMSingularity_Swift --- you should get it now
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/IMSingularity_Swift"
+  s.homepage         = "https://github.com/Mqhong/IMSingularity_Swift"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Mqhong" => "617257112@qq.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/IMSingularity_Swift.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Mqhong/IMSingularity_Swift.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'IMSingularity_Swift' => ['Pod/Assets/*.png']
-  }
+  s.source_files = 'IMSingularity_SwiftClass/*.swift'
+  #  s.resource_bundles = {
+  #  'IMSingularity_Swift' => ['Pod/Assets/*.png']
+  #}
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'SwiftR'
 end

@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-IMSingularity_Swift_Tests/IMSingularity_Swift.framework"
+  install_framework "Pods-IMSingularity_Swift_Tests/SwiftR.framework"
   install_framework "Pods-IMSingularity_Swift_Tests/FBSnapshotTestCase.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-IMSingularity_Swift_Tests/IMSingularity_Swift.framework"
+  install_framework "Pods-IMSingularity_Swift_Tests/SwiftR.framework"
   install_framework "Pods-IMSingularity_Swift_Tests/FBSnapshotTestCase.framework"
 fi
