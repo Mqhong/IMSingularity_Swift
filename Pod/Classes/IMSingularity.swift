@@ -442,6 +442,25 @@ public class IMSingularity: NSObject {
         self.invokeServiceMethod("getUnreadMessages", args: [dic])
     }
     
+    
+    //MARK: 调用服务器方法 - 获取历史信息
+    /**!
+     @brief 获取历史信息
+     @param  需要上传参数格式:
+     {
+        chat_session_id     //聊天会话ID
+        size                //消息条数
+     }
+     @return nil
+     */
+    
+    public func getHistoryMessages(chatSessionID:String,size:String){
+        var dic:Dictionary<String,String> = Dictionary<String,String>()
+        dic["chat_session_id"] = chatSessionID
+        dic["size"] = size
+        self.invokeServiceMethod("getHistoryMessages", args: [dic])
+    }
+    
     //MARK: 调用服务器方法 - 获取历史信息
     /**!
     @brief 获取历史信息
@@ -449,12 +468,12 @@ public class IMSingularity: NSObject {
     {
         chat_session_id     //聊天会话ID
         size                //消息条数
-        before_message_id   //在哪条消息之前,可选*
+        before_message_id   //在哪条消息之前
     }
     @return nil
     */
     
-    public func getHistoryMessages(chatSessionID:String,size:String,beforeMessageID:String){
+    public func getHistoryMessagesBeforeMessageID(chatSessionID:String,size:String,beforeMessageID:String){
         var dic:Dictionary<String,String> = Dictionary<String,String>()
         dic["chat_session_id"] = chatSessionID
         dic["size"] = size
