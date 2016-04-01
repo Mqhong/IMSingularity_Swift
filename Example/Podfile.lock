@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.0)
   - FBSnapshotTestCase/SwiftSupport (2.1.0):
     - FBSnapshotTestCase/Core
-  - IMSingularity_Swift (0.1.8):
+  - IMSingularity_Swift (0.1.9):
     - SwiftR
   - SwiftR (0.9.0)
 
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
-  IMSingularity_Swift: ae6eb2fa2156cd92a0d988dd7adf47131f67c935
+  IMSingularity_Swift: d6d0267268c6cc887926e0e8c91cbae4a4cc893b
   SwiftR: dffdefd527acc01b60d5525488ae670cf98921ba
 
 COCOAPODS: 0.39.0
