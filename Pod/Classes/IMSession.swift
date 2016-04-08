@@ -12,8 +12,8 @@ public class IMSession: NSObject {
     public var chat_session_id:String?
     public var chat_session_type:String?
     public var last_message:String?
-    public  var last_message_id:String?
-    public  var last_message_time:String?
+    public var last_message_id:String?
+    public var last_message_time:String?
     public var last_message_type:String?
     public var last_sender_id:String?
     public var message_count:String?
@@ -33,20 +33,20 @@ public class IMSession: NSObject {
             model.chat_session_type = String(chat_session_type!)
             
             model.last_message = dic["last_message"] as? String
-            
             model.last_message_id = dic["last_message_id"] as? String
+            
             let last_message_time = dic["last_message_time"]!
             model.last_message_time = String("\(last_message_time!)")
             
             let last_message_type = dic["last_message_type"]!
             model.last_message_type = String(last_message_type!)
-            model.last_sender_id = dic["last_sender_id"] as? String
             
+            model.last_sender_id = dic["last_sender_id"] as? String
             
             let message_count = dic["message_count"]!
             model.message_count = String(message_count!)
-            model.target_id = dic["target_id"] as? String
             
+            model.target_id = dic["target_id"] as? String
             model.target_name = dic["target_name"] as? String
             
             let target_online_status = dic["target_online_status"]!

@@ -19,7 +19,10 @@ public class TargetUserInfo: NSObject {
         self.chat_session_id = dict["chat_session_id"] as? String
         self.target_id = dict["target_id"] as? String
         self.target_name = dict["target_name"] as? String
-        self.target_picture = dict["target_picture"] as? String
+        
+        let target_picture = dict["target_picture"]!
+        self.target_picture = String(target_picture)
+        
         return self
         
     }

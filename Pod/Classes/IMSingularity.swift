@@ -220,11 +220,18 @@ public class IMSingularity: NSObject {
             self?.chatHub.on("loginCallback", callback: { (args) -> () in
                 
                 var user:UserInfo = UserInfo()
+                var dict:Dictionary<String,AnyObject>! = ["":""]
                 
-                let dict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>
                 
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
+
                 user = user.userMethod(Dict: dict)
-                
                 self?.delegate?.loginCallback!(user)
                 
             })
@@ -234,7 +241,17 @@ public class IMSingularity: NSObject {
                 
                 var target:TargetUserInfo = TargetUserInfo()
                 
-                let dict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+                var dict:Dictionary<String,AnyObject>! = ["":""]
+                
+
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject>{
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
                 
                 target =  target.targetUserMethod(Dict: dict)
                 
@@ -246,13 +263,22 @@ public class IMSingularity: NSObject {
             //监听服务器的回调 - chat.client.receiveChatSessionList - 获取会话列表
             self?.chatHub.on("receiveChatSessionList", callback: { (args) -> () in
                 
-                let Arrdict:Array<AnyObject>! = args?["0"] as? Array
+                var array:Array<AnyObject>! = []
+                
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                        array = argsDic["0"] as? Array
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                        array = argsArray![0] as? Array
+                }
                 
                 let sessionlist = IMSessionList()
                 
                 let session = IMSession()
                 
-                sessionlist.sessionList = session.sessionListMethod(ArrDict: Arrdict)
+                sessionlist.sessionList = session.sessionListMethod(ArrDict: array)
                 
                 self?.delegate?.receiveChatSessionList!(sessionlist)
                 
@@ -263,11 +289,20 @@ public class IMSingularity: NSObject {
             //监听服务器的回调 - chat.client.receiveUnreadMessages - 获取未读消息
             self?.chatHub.on("receiveUnreadMessages", callback: { (args) -> () in
                 
-                let ArrDict:Array<AnyObject>! = args?["0"] as? Array
+                var array:Array<AnyObject>! = []
+                
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    array = argsDic["0"] as? Array
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    array = argsArray![0] as? Array
+                }
                 
                 let message = Message()
                 
-                let arr:Array<Message> = message.messageMethodWithArrDict(ArrDict: ArrDict)
+                let arr:Array<Message> = message.messageMethodWithArrDict(ArrDict: array)
                 
                 let unreadMessages:UnreadMessages = UnreadMessages()
                 
@@ -279,18 +314,28 @@ public class IMSingularity: NSObject {
             //监听服务器的回调 - chat.client.receiveHistoryMessages - 获取历史消息
             self?.chatHub.on("receiveHistoryMessages", callback: { (args) -> () in
                 
-                let TotelDict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+                
+                var dict:Dictionary<String,AnyObject>! = ["":""]
+                
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>!
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
                 
                 
-                let unread_messages:Array<AnyObject> = (TotelDict["unread_messages"] as? Array<AnyObject>)!
+                let unread_messages:Array<AnyObject> = (dict["unread_messages"] as? Array<AnyObject>)!
                 
-                let history_messages:Array<AnyObject> = (TotelDict["history_messages"] as? Array<AnyObject>)!
+                let history_messages:Array<AnyObject> = (dict["history_messages"] as? Array<AnyObject>)!
                 
                 let historyMessageses:HistoryMessages = HistoryMessages()
                 
                 let message = Message()
                 
-                historyMessageses.chat_session_id = TotelDict["chat_session_id"] as? String
+                historyMessageses.chat_session_id = dict["chat_session_id"] as? String
                 
                 historyMessageses.unread_messages = message.messageMethodWithArrDict(ArrDict: unread_messages)
                 
@@ -302,12 +347,21 @@ public class IMSingularity: NSObject {
             
             self?.chatHub.on("messageCallback", callback: { (args) -> () in
                 
+                var dict:Dictionary<String,AnyObject>! = ["":""]
                 
-                let Dict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>!
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
                 
                 var message = Message()
                 
-                message = message.messageMethodWithDict(Dict: Dict)
+                message = message.messageMethodWithDict(Dict: dict)
                 
                 self?.delegate?.messageCallback!(message)
             })
@@ -316,12 +370,20 @@ public class IMSingularity: NSObject {
             //MARK:监听接收消息
             self?.chatHub.on("receiveMessage", callback: { (args) -> () in
                 
+                var dict:Dictionary<String,AnyObject>! = ["":""]
                 
-                let Dict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>!
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
                 
                 var message = Message()
                 
-                message = message.messageMethodWithDict(Dict: Dict)
+                message = message.messageMethodWithDict(Dict: dict)
                 
                 self?.delegate?.receiveMessage!(message)
                 
@@ -332,9 +394,19 @@ public class IMSingularity: NSObject {
                 
                 var userstate = UserState()
                 
-                let Dict:Dictionary<String,AnyObject>! = args?["0"] as? Dictionary
+                var dict:Dictionary<String,AnyObject>! = ["":""]
                 
-                userstate = userstate.userStateMethodWithDict(Dict: Dict)
+
+                if let argsDic:Dictionary<String,AnyObject> = args! as? Dictionary<String,AnyObject> {
+                    
+                    dict = argsDic["0"] as? Dictionary<String,AnyObject>!
+                    
+                }else if let argsArray:[AnyObject]? = args as? [AnyObject]? {
+                    
+                    dict = argsArray![0] as? Dictionary
+                }
+                
+                userstate = userstate.userStateMethodWithDict(Dict: dict)
                 
                 
                 self?.delegate?.chatUserStatusChanged!(userstate)
@@ -442,14 +514,13 @@ public class IMSingularity: NSObject {
         self.invokeServiceMethod("getUnreadMessages", args: [dic])
     }
     
-    
     //MARK: 调用服务器方法 - 获取历史信息
     /**!
      @brief 获取历史信息
      @param  需要上传参数格式:
      {
-        chat_session_id     //聊天会话ID
-        size                //消息条数
+     chat_session_id     //聊天会话ID
+     size                //消息条数
      }
      @return nil
      */
@@ -463,15 +534,15 @@ public class IMSingularity: NSObject {
     
     //MARK: 调用服务器方法 - 获取历史信息
     /**!
-    @brief 获取历史信息
-    @param  需要上传参数格式:
-    {
-        chat_session_id     //聊天会话ID
-        size                //消息条数
-        before_message_id   //在哪条消息之前
-    }
-    @return nil
-    */
+     @brief 获取历史信息
+     @param  需要上传参数格式:
+     {
+     chat_session_id     //聊天会话ID
+     size                //消息条数
+     before_message_id   //在哪条消息之前
+     }
+     @return nil
+     */
     
     public func getHistoryMessagesBeforeMessageID(chatSessionID:String,size:String,beforeMessageID:String){
         var dic:Dictionary<String,String> = Dictionary<String,String>()

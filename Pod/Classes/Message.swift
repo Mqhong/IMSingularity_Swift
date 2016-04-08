@@ -21,17 +21,30 @@ public class Message: NSObject {
     func messageMethodWithDict(Dict dict:Dictionary<String,AnyObject>)->Message{
 
         self.chat_session_id = dict["chat_session_id"] as? String
-        self.chat_session_type = String(dict["chat_session_type"]!)
+        
+        let chat_session_type = dict["chat_session_type"]!
+        self.chat_session_type         = String(chat_session_type)
+        
         
         let message = dict["message"]!
         self.message =  String(message)
-        self.message_id = dict["message_id"] as? String
-        self.message_time = String(dict["message_time"]!)
+        
+        let message_id = dict["message_id"]!
+        self.message_id         = String(message_id)
+        
+        let message_time = dict["message_time"]!
+        self.message_time         = String(message_time)
         
         let message_token = dict["message_token"]!
         self.message_token = String(message_token)
-        self.message_type = String(dict["message_type"]!)
-        self.sender_id = dict["sender_id"] as? String
+        
+        let message_type = dict["message_type"]!
+        self.message_type         = String(message_type)
+        
+        
+        let sender_id = dict["sender_id"]!
+        self.sender_id         = String(sender_id)
+        
         return self
     }
     
